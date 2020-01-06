@@ -25,12 +25,12 @@ public class MemberDao {
 	
 	// 회원 전체 목록을 리턴하는 메소드
 	public List<MemberDto> getList(){
-		// 회원 목록을 담을 객체 생성
-		List<MemberDto> list=new ArrayList<>();
 		// 필요한 객체를 담을 지역변수 만들기
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		// 회원 목록을 담을 객체 생성
+		List<MemberDto> list=new ArrayList<>();
 		try {
 			// Connection 객체 (connection pool로부터) 하나 가지고 오기
 			conn=new DbcpBean().getConn();
