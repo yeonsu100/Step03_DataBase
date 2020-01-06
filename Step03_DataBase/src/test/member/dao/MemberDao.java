@@ -25,24 +25,31 @@ public class MemberDao {
 	
 	// 회원 전체 목록을 리턴하는 메소드
 	public List<MemberDto> getList(){
+		// 회원 목록을 담을 객체 생성
+		List<MemberDto> list=new ArrayList<>();
 		// 필요한 객체를 담을 지역변수 만들기
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		// 회원 목록을 담을 객체 생성
-		List<MemberDto> list=new ArrayList<>();
 		try {
 			// Connection 객체 (connection pool로부터) 하나 가지고 오기
 			conn=new DbcpBean().getConn();
 			String sql="SELECT num, name, addr FROM member"
-					+ " ORDER BY num DESC";
-			pstmt=conn.prepareStatement(sql);
+					+ " ORDER BY num ASC";
+			//pstmt=conn.prepareStatement(sql);
+			// sql문 수행하고 결과셋 받아오기
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				MemberDto dto=new MemberDto();
-				dto.setNum(rs.getInt("num"));
-				dto.setName(rs.getString("name"));
-				dto.setAddr(rs.getString("addr"));
+				int num=rs.getInt("num");
+				String name=rs.getString("name");
+				String addr=rs.getString("addr");
+				// 회원 한명의 정보를 MemberDto 객체에 담는다.
+				MemberDto dto=new MemberDto(num, name, addr);
+				//sMemberDto dto=new MemberDto();
+//				dto.setNum(rs.getInt("num"));
+//				dto.setName(rs.getString("name"));
+//				dto.setAddr(rs.getString("addr"));
+				// MemberDto 객체의 참조값을 ArrayList 에 저장
 				list.add(dto);
 			}
 		}catch(Exception e) {
@@ -161,8 +168,8 @@ public class MemberDao {
 				dto.setName(rs.getString("name"));
 				dto.setAddr(rs.getString("addr"));
 			}
-		}catch(Exception e) {
-			e.printStackTrace();
+		}catch(SQLException se) {
+			se.printStackTrace();
 		}finally {
 			try {
 				if(rs!=null)rs.close();
