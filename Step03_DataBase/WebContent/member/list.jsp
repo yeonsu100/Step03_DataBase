@@ -3,12 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
-    	// MemberDao 객체의 참조값 얻어오기
-    	MemberDao dao=MemberDao.getInstance();
-    	// 회원목록 얻어오기
-    	List<MemberDto> list=dao.getList();
-    %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +11,13 @@
 <title>/member/list.jsp</title>
 </head>
 <body>
+ <%
+   	// MemberDao 객체의 참조값 얻어오기
+   	MemberDao dao=MemberDao.getInstance();
+   	// 회원목록 얻어오기
+   	List<MemberDto> list=dao.getList();
+%>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
-</body>
 <div class="container">
 	<h1>List of Member</h1>
 	<table class="table table-bordered">
@@ -44,4 +44,5 @@
 	</table>
 	<a href="insertform.jsp">Add a member</a>
 </div>
+</body>
 </html>

@@ -3,9 +3,9 @@ package test.member.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import test.member.dto.MemberDto;
 import test.util.DbcpBean;
 
@@ -57,20 +57,119 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
 	// 회원 한 명의 정보 추가
 	public boolean insert(MemberDto dto) {
-		return false;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		int flag=0;
+		try {
+			conn=new DbcpBean().getConn();
+			String sql="INSERT INTO member (num,name,addr)"
+					+ " VALUES(MEMBER_SEQ.NEXTVAL, ?, ?)";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getAddr());
+			flag=pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e) {}
+		}
+		if(flag>0) {
+			return true;
+		}else {
+			return false;
+		}
 	}
+	
 	// 회원 한 명의 정보 수정
 	public boolean update(MemberDto dto) {
-		return false;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		int flag=0;
+		try {
+			// Connection Pool 에서 Connection 객체 가지고 오고 
+			conn=new DbcpBean().getConn();
+			String sql="UPDATE member SET name=?,addr=?"
+					+ " WHERE num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getAddr());
+			pstmt.setInt(3, dto.getNum());
+			flag=pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				// conn.close() 하면 Connection 이 자동 반납된다.
+				if(conn!=null)conn.close();
+			}catch(Exception e) {}
+		}
+		if(flag>0) {
+			return true;
+		}else {
+			return false;
+		}
 	}
+	
 	// 회원 한 명의 정보 삭제
 	public boolean delete(int num) {
-		return false;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		int flag=0;
+		try {
+			conn=new DbcpBean().getConn();
+			String sql="DELETE FROM member WHERE num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			flag=pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e) {}
+		}
+		if(flag>0) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	// 회원 한 명의 정보 리턴
 	public MemberDto getData(int num) {
-		return null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		MemberDto dto=null;
+		try {
+			conn=new DbcpBean().getConn();
+			String sql="SELECT * FROM member WHERE num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				// MemberDto 객체를 생성하여 회원 정보를 담는다.
+				dto=new MemberDto();
+				dto.setNum(num);
+				dto.setName(rs.getString("name"));
+				dto.setAddr(rs.getString("addr"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e) {}
+		}
+	return dto;
 	}
-}
+}	
