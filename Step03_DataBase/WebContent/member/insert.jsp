@@ -3,17 +3,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	// 한글 인코딩 설정
+	// 0. 한글 인코딩 설정...(하지만 난 이 과정이 필요 없지...) <- post 방식 전송했을 때 한글 깨지지 않도록 이 작업 필수!!
 	request.setCharacterEncoding("utf-8");
-	// 폼 전송되는 파라미터 추출
-	String name=request.getParameter("name");
+	// 1. 폼 전송되는 파라미터 추출 (이름과 주소 추출)하여
+	String name=request.getParameter("name");	// insertform에서 input요소의 네임 속성의 밸류값과 일치해야 한다
 	String addr=request.getParameter("addr");
-	// MemberDto에 담아서
-	MemberDto dto=new MemberDto();
-	dto.setName(name);
-	dto.setAddr(addr);
-	// MemberDao객체를 이용해서 DB에 저장
+	// MemberDto에 담고
+	MemberDto dto=new MemberDto(0, name, addr);
+	// 2. MemberDao객체를 이용해서 DB에 저장한 다음
 	MemberDao dao=MemberDao.getInstance();
+	// (작업의 성공여부를 알고싶으면 부울리언을 이용해 응답을 나타냄)
+	boolean isSuccess=dao.insert(dto);
+	// 3. 응답한다
 	dao.insert(dto);
 %>
     
@@ -24,7 +25,12 @@
 <title>/member/insert.jsp</title>
 </head>
 <body>
-<p>Information of Member was Inserted.</p>
-<a href="list.jsp">Show a member list</a>
+<%if(isSuccess){ %>
+	<p>Information of Member was Inserted.</p>
+	<a href="list.jsp">Show a member list</a>
+<%}else{ %>
+	<p>Failure to Insert.</p>
+	<a href="insertform.jsp">Try it again</a>
+<%} %>
 </body>
 </html>

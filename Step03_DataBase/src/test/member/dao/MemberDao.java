@@ -36,19 +36,19 @@ public class MemberDao {
 			conn=new DbcpBean().getConn();
 			String sql="SELECT num, name, addr FROM member"
 					+ " ORDER BY num ASC";
-			//pstmt=conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
 			// sql문 수행하고 결과셋 받아오기
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				int num=rs.getInt("num");
-				String name=rs.getString("name");
-				String addr=rs.getString("addr");
+//				int num=rs.getInt("num");
+//				String name=rs.getString("name");
+//				String addr=rs.getString("addr");
 				// 회원 한명의 정보를 MemberDto 객체에 담는다.
-				MemberDto dto=new MemberDto(num, name, addr);
-				//sMemberDto dto=new MemberDto();
-//				dto.setNum(rs.getInt("num"));
-//				dto.setName(rs.getString("name"));
-//				dto.setAddr(rs.getString("addr"));
+				//MemberDto dto=new MemberDto(num, name, addr);
+				MemberDto dto=new MemberDto();
+				dto.setNum(rs.getInt("num"));
+				dto.setName(rs.getString("name"));
+				dto.setAddr(rs.getString("addr"));
 				// MemberDto 객체의 참조값을 ArrayList 에 저장
 				list.add(dto);
 			}
@@ -71,10 +71,11 @@ public class MemberDao {
 		PreparedStatement pstmt=null;
 		int flag=0;
 		try {
-			conn=new DbcpBean().getConn();
+			conn=new DbcpBean().getConn();			// DbcpBean을 통해서 컨넥션을 얻어와서
 			String sql="INSERT INTO member (num,name,addr)"
 					+ " VALUES(MEMBER_SEQ.NEXTVAL, ?, ?)";
 			pstmt=conn.prepareStatement(sql);
+			// ?에 값 바인딩하기
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getAddr());
 			flag=pstmt.executeUpdate();
