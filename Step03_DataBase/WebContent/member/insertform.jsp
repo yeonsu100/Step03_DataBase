@@ -11,9 +11,6 @@
 	body{
 		padding-top: 50px;
 		}
-	.container{
-		padding-top: 100px;
-		}
 </style>
 </head>
 <body>

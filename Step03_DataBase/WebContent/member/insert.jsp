@@ -27,6 +27,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>/member/insert.jsp</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
+<style>
+	body{
+		padding-top: 50px;
+		}
+	.container{
+		padding-top: 100px;
+		}
+</style>
+
 </head>
 <body>
 <div class="container">
