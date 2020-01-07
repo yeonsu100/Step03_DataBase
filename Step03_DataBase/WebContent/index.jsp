@@ -19,6 +19,9 @@
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">HOME</a>	<!-- 최상위 경로(index 페이지)로 올라오겠다는 의미 -->
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="${pageContext.request.contextPath }/member/list.jsp">Member Page</a></li>
+			<li><a href="member/list.jsp">Path test</a></li>
+			<li><a href="${pageContext.request.contextPath }/todo/list.jsp">To Do List</a></li>
+			<li><a href="#">Memo</a></li>
 			<li><a href="https://www.youtube.com">YouTube</a></li>
 			<li><a href="https://www.instagram.com/yunstagram_100/">Yunstagram</a></li>
 		</ul>
