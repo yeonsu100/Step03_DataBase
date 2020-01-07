@@ -65,7 +65,7 @@
 		<%} %>
 		</tbody>
 	</table>
-	<a href="insertform.jsp">Add a member</a>
+	<h3><a href="insertform.jsp">Add a member</a></h3>
 </div>
 </body>
 </html>

@@ -30,6 +30,8 @@
 	<ul>
 		<li><a href="member/list.jsp">Show a member list (member table)</a></li>
 	</ul>
+	<script src="https://gist.github.com/yeonsu100/745beec3bdc6adecb51cc7fc9b4de830.js"></script>
+	
 </div>
 </body>
 </html>
