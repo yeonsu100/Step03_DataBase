@@ -26,14 +26,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>/member/insert.jsp</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
 <body>
-<%if(isSuccess){ %>
-	<p>Information of Member was Inserted.</p>
-	<a href="list.jsp">Show a member list</a>
-<%}else{ %>
-	<p>Failure to Insert.</p>
-	<a href="insertform.jsp">Try it again</a>
-<%} %>
+<div class="container">
+	<%if(isSuccess){ %>
+		<p class="alert alert-success">Information of Member was Inserted.</p>
+		<a href="list.jsp">Show a member list</a>
+	<%}else{ %>
+		<p class="alert alert-danger">Failure to Insert.</p>
+		<a href="insertform.jsp">Try it again</a>
+	<%} %>
+</div>
 </body>
 </html>
