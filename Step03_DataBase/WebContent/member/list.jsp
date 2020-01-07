@@ -15,9 +15,6 @@
 	body{
 		padding-top: 50px;
 		}
-	breadcrumb{
-		color: blue;
-		}
 </style>
 </head>
 <body>
