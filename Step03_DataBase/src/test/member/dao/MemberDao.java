@@ -105,6 +105,7 @@ public class MemberDao {
 			String sql="UPDATE member SET name=?,addr=?"
 					+ " WHERE num=?";
 			pstmt=conn.prepareStatement(sql);
+			// ?에 값 바인딩하기
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getAddr());
 			pstmt.setInt(3, dto.getNum());
@@ -134,6 +135,7 @@ public class MemberDao {
 			conn=new DbcpBean().getConn();
 			String sql="DELETE FROM member WHERE num=?";
 			pstmt=conn.prepareStatement(sql);
+			// ?에 값 바인딩하기
 			pstmt.setInt(1, num);
 			flag=pstmt.executeUpdate();
 		}catch(SQLException se) {
@@ -152,19 +154,24 @@ public class MemberDao {
 	}
 	// 회원 한 명의 정보 리턴
 	public MemberDto getData(int num) {
+		// 리턴해줄 data 선언
+		MemberDto dto=null;
+		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		MemberDto dto=null;
+		ResultSet rs=null;			// 결과를 저장할 result set 추가하기
+		
 		try {
 			conn=new DbcpBean().getConn();
 			String sql="SELECT * FROM member WHERE num=?";
 			pstmt=conn.prepareStatement(sql);
+			// ?에 값 바인딩하기
 			pstmt.setInt(1, num);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				// MemberDto 객체를 생성하여 회원 정보를 담는다.
+				// MemberDto 객체를 생성하여 
 				dto=new MemberDto();
+				// 회원 정보를 담는다.
 				dto.setNum(num);
 				dto.setName(rs.getString("name"));
 				dto.setAddr(rs.getString("addr"));
@@ -175,9 +182,11 @@ public class MemberDao {
 			try {
 				if(rs!=null)rs.close();
 				if(pstmt!=null)pstmt.close();
+				//connection pool 에 반납하기
 				if(conn!=null)conn.close();
 			}catch(Exception e) {}
 		}
-	return dto;
-	}
+		// MemberDto 객체 리턴해주기
+		return dto;
+		}
 }	

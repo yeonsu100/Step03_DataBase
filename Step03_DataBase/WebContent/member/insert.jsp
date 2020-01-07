@@ -12,10 +12,13 @@
 	MemberDto dto=new MemberDto(0, name, addr);
 	// 2. MemberDao객체를 이용해서 DB에 저장한 다음
 	MemberDao dao=MemberDao.getInstance();
+	dao.insert(dto);
+	
 	// (작업의 성공여부를 알고싶으면 부울리언을 이용해 응답을 나타냄)
 	boolean isSuccess=dao.insert(dto);
+	
 	// 3. 응답한다
-	dao.insert(dto);
+
 %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

@@ -37,7 +37,7 @@
 				<td><%=tmp.getName() %></td>
 				<td><%=tmp.getAddr() %></td>
 				<td><a href="updateform.jsp?num=<%=tmp.getNum() %>">UPDATE</a></td>
-				<td><a href="delete.jsp?num=<%=tmp.getName() %>">DELETE</a></td>
+				<td><a href="delete.jsp?num=<%=tmp.getNum() %>">DELETE</a></td>
 			</tr>
 		<%} %>
 		</tbody>

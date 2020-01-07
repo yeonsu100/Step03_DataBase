@@ -10,19 +10,30 @@
 </head>
 <body>
 <%
-	// 폼 전송되는 한글 깨지지 않도록 
+	// 0. 폼 전송되는 한글 깨지지 않도록  인코딩
 	request.setCharacterEncoding("utf-8");
-	// 폼 전송되는 수정할 회원의 정보를 읽어온다. 
+	// 1. 파라미터로 전달되는 (폼 전송되는) 수정할 회원의 정보를 읽어온다. 
 	int num=Integer.parseInt(request.getParameter("num"));
 	String name=request.getParameter("name");
 	String addr=request.getParameter("addr");
-	// MemberDao 객체를 이용해서 DB 에 수정반영
+	// 2. MemberDao 객체를 이용해서 DB에 수정된 내용을 반영한다.
 	MemberDto dto=new MemberDto(num, name, addr);
-	MemberDao dao=MemberDao.getInstance();
-	dao.update(dto);
-	// 응답하기 
+	boolean isSuccess=MemberDao.getInstance().update(dto);
+	// 3. 수정할 회원의 정보를 form에 잘 출력해서 응답한다.
+	
 %>
-<p> <strong>No.<%=num %></strong> was Updated.</p>
-<a href="list.jsp">Show a member list</a>
+<%if(isSuccess){ %>
+	<script>
+		// 알림창 띄우기
+		alert("No.<%=num %> was updated successfully.");
+		location.href="list.jsp";
+	</script>
+<%}else{ %>
+	<script>
+		alert("Failure to update.");
+		location.href="list.jsp";
+	</script>
+<%} %>
+
 </body>
 </html>
