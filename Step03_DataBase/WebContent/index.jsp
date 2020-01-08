@@ -32,6 +32,7 @@
 	<p>context path : ${pageContext.request.contextPath }</p>
 	<ul>
 		<li><a href="member/list.jsp">Show a member list (member table)</a></li>
+		<li><a href="todo/list.jsp">Show a to do list (schedule table)</a></li>
 	</ul>
 	<script src="https://gist.github.com/yeonsu100/745beec3bdc6adecb51cc7fc9b4de830.js"></script>
 	
