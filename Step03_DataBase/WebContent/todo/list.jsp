@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>/todo/list.jsp</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/yscustom.css" />
 <style>
 	body{
 		padding-top: 50px;
@@ -22,6 +23,9 @@
 		}
 
 </style>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
+
 </head>
 <body>
 <%
@@ -82,6 +86,8 @@
 		}
 	}
 </script>
+
+<jsp:include page="../include/ysfooter.jsp"></jsp:include>
 
 </body>
 </html>
