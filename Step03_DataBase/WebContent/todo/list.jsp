@@ -39,7 +39,8 @@
 				<td><%=tmp.getContent() %></td>
 				<td><%=tmp.getRegdate() %></td>
 				<td><a href="updateform.jsp?num=<%=tmp.getNum() %>">Update this assignment</a></td>
-				<td><a href="delete.jsp?num=<%=tmp.getNum() %>">Delete this assignment</a></td>
+				<td><a href="javascript:deleteConfirm(<%=tmp.getNum()%>);">Delete this assignment</a></td> 
+						<!-- ▲ 삭제 버튼을 눌렀을 때 정말 삭제할 것인지 확인하는 알림창 띄우기 -->
 			</tr>
 		<%} %>	
 		</tbody>
@@ -49,5 +50,13 @@
 	<!-- 절대경로 (추천) -->	
 	<h3><a href="${pageContext.request.contextPath }/todo/insertform.jsp">Add an assignment...</a></h3>
 </div>
+<script>
+	function deleteConfirm(num){
+		var isDelete=confirm("Are you sure you really want a delete No."+num+" ?");
+		if(isDelete){
+			location.href="delete.jsp?num=";
+		}
+	}
+</script>
 </body>
 </html>
