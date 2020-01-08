@@ -10,6 +10,16 @@
 <title>/todo/list.jsp</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <style>
+	body{
+		padding-top: 50px;
+		}
+	h1{
+		color : pink;
+		}
+	th{
+		background-color : skyblue;
+		color : white; 
+		}
 
 </style>
 </head>
@@ -20,9 +30,23 @@
 	// To Do List 얻어오기
 	List<ToDoDto> list=dao.getList();
 %>
+<!-- 네비게이션 바 추가 -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">HOME</a>	<!-- 최상위 경로(index 페이지)로 올라오겠다는 의미 -->
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="${pageContext.request.contextPath }/member/list.jsp">Member Page</a></li>
+			<li class="active"><a href="${pageContext.request.contextPath }/todo/list.jsp">Schedule Page</a></li>
+			<li class="active"><a href="${pageContext.request.contextPath }/product/list.jsp">Product Page</a></li>
+			<li><a href="https://www.youtube.com">YouTube</a></li>
+			<li><a href="https://www.instagram.com/yunstagram_100/">Yunstagram</a></li>
+		</ul>
+	</div>
+</div>
+
 <div class="container">
 	<h1>Winnie's To Do List</h1>
-	<table class="table table-bordered">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>No.</th>
@@ -48,13 +72,13 @@
 	<!-- 상대경로 (비추) -->
 	<!-- 	<h3><a href="insertform.jsp">Add a to do list...</a></h3> 	-->	
 	<!-- 절대경로 (추천) -->	
-	<h3><a href="${pageContext.request.contextPath }/todo/insertform.jsp">Add an assignment...</a></h3>
+	<button class="btn btn-default"><a href="${pageContext.request.contextPath }/todo/insertform.jsp">Add an assignment...</a></button>
 </div>
 <script>
 	function deleteConfirm(num){
 		var isDelete=confirm("Are you sure you really want a delete No."+num+" ?");
 		if(isDelete){
-			location.href="delete.jsp?num=";
+			location.href="delete.jsp?num="+num;
 		}
 	}
 </script>
