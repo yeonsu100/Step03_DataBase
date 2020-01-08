@@ -10,12 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>/member/list.jsp</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
-<style>
-	/* navbar가 상단에 고정되어 있기 때문에 제목 (List of Member)이 가려져 공간이 남는 문제 해결 */
-	body{
-		padding-top: 50px;
-		}
-</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/step03_custom.css" />
+
 </head>
 <body>
 <%
@@ -67,5 +63,9 @@
 	</table>
 	<h3><a href="insertform.jsp">Add a member</a></h3>
 </div>
+
+<%-- /include/footer.jsp --%>
+<jsp:include page="../include/footer.jsp"></jsp:include>
+
 </body>
 </html>
