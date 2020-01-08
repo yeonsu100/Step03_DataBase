@@ -5,7 +5,7 @@
 <footer class="footer-bs">
         <div class="row">
         	<div class="col-md-3 footer-brand animated fadeInLeft">
-            	<h2><span class="glyphicon glyphicon-star-empty"></span>Winnie World<span class="glyphicon glyphicon-star-empty"></span></h2>
+            	<h2><span class="glyphicon glyphicon-star"></span>Winnie World<span class="glyphicon glyphicon-star"></span></h2>
                 <p>E ku'u pili aloha Ku'u lei kau po'ohiwi Onaona i ka ihu Nohea i ka maka Liliko i ka ua kilihune Kilipohe i ke kanilehua Lehua Wewelo ke aloha i ka 'onohi 'Ume'ume mai ho'i kau E kahi lei ho'oheno</p>
                 <p>Copyright©2020 by Winnie Beckinsale</p>
             </div>
