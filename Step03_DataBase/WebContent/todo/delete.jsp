@@ -11,6 +11,8 @@
 	response.sendRedirect("list.jsp");
 %>
 
+
+
 <!-- 리 다이렉트 응답(sendRedirect) 덕분에 아래 코드가 필요 없어졌다. -->
 <!-- 
  
