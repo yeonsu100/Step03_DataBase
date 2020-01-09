@@ -1,8 +1,10 @@
 @charset "UTF-8";	/* 한글 깨지지 않도록 인코딩 */
 
-	body{
-		padding-top: 50px;
-		}
+	body{padding-top: 50px;}
+		
+	/* navbar{background-color:#C0DAFF;} */
+	
+	marquee{padding: 60px 40px;}
 		
 	.footer-bs {
 	  	background-color: #C0DAFF;
