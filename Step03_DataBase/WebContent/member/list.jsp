@@ -20,19 +20,13 @@
    	// 회원목록 얻어오기
    	List<MemberDto> list=dao.getList();
 %>
-<!-- 네비게이션 바 생성 -->
-<div class="navbar navbar-default navbar-fixed-top">		
-		<!-- inverse : 검은색 / default : 회색  |  스크롤 했을때에도 네비게이션 바 위에 위치하도록 고정-->
-	<div class="container">
-		<a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">HOME</a>	<!-- 최상위 경로(index 페이지)로 올라오겠다는 의미 -->
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="${pageContext.request.contextPath }/member/list.jsp">Member Page</a></li>
-					<!-- active : 현재 보고있는 페이지임을 알수 있도록 버튼 활성화 -->
-			<li><a href="https://www.youtube.com">YouTube</a></li>
-			<li><a href="https://www.instagram.com/yunstagram_100/">Yunstagram</a></li>
-		</ul>
-	</div>
-</div>
+<!-- 네비게이션 바 include (경로 : WebContent/include/navbar.jsp) 
+	  만약 경로를 두 칸 올라가야 한다면 ../../include/navbar.jsp로 표현한다 -->
+<%-- 피 include되는 jsp 페이지에 파라미터를 전달해줄 수 있다 --%>
+<jsp:include page="../include/navbar.jsp">
+	<jsp:param value="member" name="category"/>
+</jsp:include>
+
 <div class="container">
 	<!-- 현재 페이지의 위치를 좀 더 자세히 알려주는 breadcrumb (빵 부스러기) - depth를 추가하여 알도록 할 수 있다 -->
 	<ol class="breadcrumb">
@@ -55,8 +49,10 @@
 				<td><%=tmp.getNum() %></td>
 				<td><%=tmp.getName() %></td>
 				<td><%=tmp.getAddr() %></td>
-				<td><a href="updateform.jsp?num=<%=tmp.getNum() %>">UPDATE</a></td>
-				<td><a href="delete.jsp?num=<%=tmp.getNum() %>">DELETE</a></td>
+				<td><a href="updateform.jsp?num=<%=tmp.getNum() %>">
+					<!-- 스크린 리더기를 위한 기능 text 제공하기 -->
+					<span class="glyphicon glyphicon-edit" class="sr-only">Update</a></td>
+				<td><a href="delete.jsp?num=<%=tmp.getNum() %>"><span class="glyphicon glyphicon-trash"></a></td>
 			</tr>
 		<%} %>
 		</tbody>
