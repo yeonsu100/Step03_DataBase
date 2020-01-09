@@ -23,17 +23,20 @@
 	boolean isSuccess=ToDoDao.getInstance().update(dto);
 
 %>
+
+<div class="container">
 <%if(isSuccess){ %>
 	<script>
 		alert("No.<%=num%> content was updated successfully.");
 		location.href="list.jsp";
 	</script>
 <%}else{ %>
-<script>
-	alert("Failure to update.");
-	location.href="list.jsp";
-</script>
+	<script>
+		alert("Failure to update.");
+		location.href="list.jsp";
+	</script>
 <%} %>
+</div>
 
 </body>
 </html>

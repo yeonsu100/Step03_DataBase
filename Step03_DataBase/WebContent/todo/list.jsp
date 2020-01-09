@@ -11,12 +11,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/yscustom.css" />
 <style>
-	body{
-		padding-top: 50px;
-		}
-	h1{
-		color : pink;
-		}
+	body{padding-top: 50px;}
+	h1{color : pink;}
 	th{
 		background-color : skyblue;
 		color : white; 
@@ -41,6 +37,7 @@
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="${pageContext.request.contextPath }/member/list.jsp">Member Page</a></li>
 			<li class="active"><a href="${pageContext.request.contextPath }/todo/list.jsp">Schedule Page</a></li>
+			<li class="active"><a href="${pageContext.request.contextPath }/board/list.jsp">Bulletin board</a></li>
 			<li class="active"><a href="${pageContext.request.contextPath }/product/list.jsp">Product Page</a></li>
 			<li><a href="https://www.youtube.com">YouTube</a></li>
 			<li><a href="https://www.instagram.com/yunstagram_100/">Yunstagram</a></li>
@@ -56,8 +53,8 @@
 				<th>No.</th>
 				<th>Content</th>
 				<th>Date</th>
-				<th>Update this Content</th>
-				<th>Delete this Content</th>
+				<th>Update this assignment</th>
+				<th>Delete this assignment</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -66,8 +63,8 @@
 				<td><%=tmp.getNum() %></td>
 				<td><%=tmp.getContent() %></td>
 				<td><%=tmp.getRegdate() %></td>
-				<td><a href="updateform.jsp?num=<%=tmp.getNum() %>">Update this assignment</a></td>
-				<td><a href="javascript:deleteConfirm(<%=tmp.getNum()%>);">Delete this assignment</a></td> 
+				<td><a href="updateform.jsp?num=<%=tmp.getNum() %>"><span class="glyphicon glyphicon-edit"></span></a></td>
+				<td><a href="javascript:deleteConfirm(<%=tmp.getNum()%>);"><span class="glyphicon glyphicon-trash"></a></td> 
 						<!-- ▲ 삭제 버튼을 눌렀을 때 정말 삭제할 것인지 확인하는 알림창 띄우기 -->
 			</tr>
 		<%} %>	
