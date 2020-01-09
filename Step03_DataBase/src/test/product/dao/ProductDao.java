@@ -51,16 +51,17 @@ public class ProductDao {
 	}
 
 	// 상품 추가 (INSERT)
-	public boolean insert(String pdt) {
+	public boolean insert(ProductDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int flag=0;
 		try {
 			conn=new DbcpBean().getConn();
 			String sql="INSERT INTO product (code, pdt, regdate)"
-					+ " VALUES(null, ?, sysdate)";
+					+ " VALUES(?, ?, sysdate)";
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, pdt);
+			pstmt.setInt(1, dto.getCode());
+			pstmt.setString(2, dto.getPdt());
 			flag=pstmt.executeUpdate();	
 		}catch(Exception e) {
 			e.printStackTrace();

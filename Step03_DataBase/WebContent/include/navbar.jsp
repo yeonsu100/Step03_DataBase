@@ -30,6 +30,7 @@
 			<li <%if(category.equals("member")){%>class="active"<%}%>><a href="${pageContext.request.contextPath }/member/list.jsp">Member Page</a></li>
 			<li <%if(category.equals("todo")){%>class="active"<%}%>><a href="${pageContext.request.contextPath }/todo/list.jsp">To Do List</a></li>
 			<li <%if(category.equals("borad")){%>class="active"<%}%>><a href="${pageContext.request.contextPath }/board/list.jsp">Bulletin board</a></li>
+			<li <%if(category.equals("product")){%>class="active"<%}%>><a href="${pageContext.request.contextPath }/shoppingmall/list.jsp">Product Management</a></li>
 			<li><a href="#">Memo</a></li>
 			<li><a href="https://www.youtube.com">YouTube</a></li>
 			<li><a href="https://www.instagram.com/yunstagram_100/">Yunstagram</a></li>

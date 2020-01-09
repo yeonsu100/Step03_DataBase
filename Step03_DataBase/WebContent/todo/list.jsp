@@ -38,7 +38,7 @@
 			<li class="active"><a href="${pageContext.request.contextPath }/member/list.jsp">Member Page</a></li>
 			<li class="active"><a href="${pageContext.request.contextPath }/todo/list.jsp">Schedule Page</a></li>
 			<li class="active"><a href="${pageContext.request.contextPath }/board/list.jsp">Bulletin board</a></li>
-			<li class="active"><a href="${pageContext.request.contextPath }/product/list.jsp">Product Page</a></li>
+			<li class="active"><a href="${pageContext.request.contextPath }/shoppingmall/list.jsp">Product Page</a></li>
 			<li><a href="https://www.youtube.com">YouTube</a></li>
 			<li><a href="https://www.instagram.com/yunstagram_100/">Yunstagram</a></li>
 		</ul>

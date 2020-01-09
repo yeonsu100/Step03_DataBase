@@ -17,6 +17,7 @@
 	ProductDao dao=ProductDao.getInstance();
 	List<ProductDto> list=dao.getList();
 %>
+<jsp:include page="../include/navbar.jsp"></jsp:include>
 
 <div class="container">
 	<h1>Product List</h1>
