@@ -42,7 +42,10 @@
 		<%} %>
 	</tbody>
 	</table>
-	<button><a href="${pageContext.request.contextPath }/shoppingmall/insertform.jsp"></a></button>
+	<button><a href="insertform.jsp">Add a product</a></button>
 </div>
+
+<jsp:include page="../include/ysfooter.jsp"></jsp:include>
+
 </body>
 </html>
